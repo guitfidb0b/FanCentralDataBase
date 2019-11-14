@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FanCentral2.Data;
 using FanCentral2.Models;
+using FanCentral2.Models.ViewModels;
 
 namespace FanCentral2.Controllers
 {
