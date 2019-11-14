@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FanCentral2.Models;
 
-namespace FanCentralDataBase.Models.ViewModels
+namespace FanCentral2.Models.ViewModels
 {
     public class BrowseProductCategories
     {
