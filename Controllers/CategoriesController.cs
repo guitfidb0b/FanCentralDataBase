@@ -21,9 +21,30 @@ namespace FanCentral2.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id, int? productID)
         {
-            return View(await _context.Categories.ToListAsync());
+            //This is how we load all data into the view (using eager loading)
+            var viewModel = new BrowseProductCategories();
+            viewModel.Categories = await _context.Categories
+                .Include(c => c.ProductCategories)
+                    .ThenInclude(c => c.Product)
+                .AsNoTracking()
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
+
+            if (id != null)
+            {
+                ViewData["CategoryID"] = id.Value;
+                Category category = viewModel.Categories.Where( c => c.CategoryID == id.Value).Single();
+                viewModel.Products = category.ProductCategories.Select(s => s.Product);
+            }
+            if (productID != null)
+            {
+                ViewData["ProductID"] = productID.Value;
+                viewModel.ProductCategories = viewModel.Products.Where(x => x.ProductID == productID).Single().ProductCategories;
+            }
+
+            return View(viewModel);
         }
 
         
