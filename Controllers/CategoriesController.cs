@@ -43,7 +43,7 @@ namespace FanCentral2.Controllers
                 .Include(pc => pc.ProductCategories)
                     .ThenInclude(p => p.Product)
                 .FirstOrDefaultAsync(m => m.CategoryID == id);
-                
+
             if (category == null)
             {
                 return NotFound();
