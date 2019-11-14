@@ -27,7 +27,7 @@ namespace FanCentral2.Controllers
                     .ThenInclude(p => p.Product)
                 .AsNoTracking()
                 select c;
-            int pageSize = 5;
+            int pageSize = 10;
             return View(await PaginatedList<Category>.CreateAsync(categories.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
@@ -40,7 +40,10 @@ namespace FanCentral2.Controllers
             }
 
             var category = await _context.Categories
+                .Include(pc => pc.ProductCategories)
+                    .ThenInclude(p => p.Product)
                 .FirstOrDefaultAsync(m => m.CategoryID == id);
+                
             if (category == null)
             {
                 return NotFound();
