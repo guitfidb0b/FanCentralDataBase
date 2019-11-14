@@ -1,30 +1,68 @@
-@model IEnumerable<FanCentral2.Models.Category>
+@model FanCentral2.Models.ViewModels.BrowseProductCategories
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Browse Categories";
 }
 
-<h1>Index</h1>
+<h1>Browse Categories</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model.Categories)
+        {
+            string selectedRow = "";
+            if (item.CategoryID == (int?)ViewData["CategoryID"])
+            {
+                selectedRow = "success";
+            }
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
+            <td>
+                <a asp-action="Index" asp-route-id="@item.CategoryID">Select</a>
+            </td>
+            
         </tr>
-}
+        }
     </tbody>
 </table>
+
+@if (Model.Products != null)
+{
+    <h3>Available Products in this category</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+
+        @foreach (var item in Model.Products)
+        {
+            string selectedRow = "";
+            if (item.ProductID == (int?)ViewData["ProductID"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    <img src="~/Images/Products/@item.ImageName" />
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        }
+    </table>
+}
