@@ -1,0 +1,874 @@
+* {
+    outline: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  img.search-icon-size {
+    width: 70px;
+    height: auto;
+    position: absolute;
+    right: 240px;
+    top: 35px;
+    transition: .2s;
+    transition-delay: .1s;
+    transition-timing-function:ease-in-out;
+  }
+  
+  div.search-window:hover img.search-icon-size {
+    right: 67%;
+  }
+  
+  .top {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    position: relative;
+    width: 80%;
+    height: 50px;
+    top: -45px;
+    left: 20%;
+  }
+  
+  .top-links {
+    float: right;
+    font-size: 16px;
+    padding: 17px 40px 17px 0;
+  }
+  
+  .cart-position {
+    height: 40px;
+    width: 100px;
+    padding: 5px;
+    float: right;
+    text-align: center;
+    background-color: #008080;
+    margin: 0;
+    /*box-shadow: 1px 1px 1px 1px #004d4d;*/
+  }
+  
+  a.top-links {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .top-links:hover {
+    text-decoration: underline;
+  }
+  
+  img.cart-icon-size {
+    width: 40px;
+    height: auto;
+  }
+  
+  .cart-position:hover {
+    background-color: #00b3b3;
+  }
+  
+  li {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    display: inline-block;
+    color: white;
+  }
+  
+  div.bottom-header-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #272727;
+    height: 170px;
+    width: 100%;
+    border: 1px solid #272727
+  }
+  
+  div.logo-home {
+    background-color: #272727;
+    width: 19%;
+    height: 140px;
+    position: relative;
+    left: 1%;
+    top: 15px;
+    text-align: center;
+  }
+  
+  div.deal-link {
+    height: 140px;
+    background-color: #006666;
+    box-shadow: 1px 1px 1px 1px #004d4d;
+    background-image: linear-gradient(to bottom right, #006666, #008080);
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: white;
+    font-size: 30px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    opacity: .8;
+    top: -125px;
+    left: 20%;
+    width: 60%;
+  }
+  
+  div.clickable-div {
+    height: 140px;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /* Group 1 */
+  div.deal-message-1 {
+    position: absolute;
+    left: 5px;
+    top: 35px;
+    font-size: 55px;
+    font-weight:bold;
+    padding: 0;
+    opacity: 0;
+    animation-name: deal-message-1-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-1-animated {
+    0% {opacity: 0;}
+    2% {opacity: 0;}
+    10% {opacity: 1; transform: translateX(0px);}
+    12% {opacity: 1; transform: translateX(0px);}
+    13% {opacity: 1; transform: translateX(-800px);}
+    100% {opacity: 1; transform: translateX(-800px);}
+  }
+  
+  div.deal-message-2 {
+    position: absolute;
+    right: 5px;
+    top: 35px;
+    font-size: 55px;
+    font-weight:bold;
+    padding: 0;
+    opacity: 0;
+    animation-name: deal-message-2-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-2-animated {
+    0% {opacity: 0;}
+    2% {opacity: 0;}
+    10% {opacity: 1; transform: translateX(0px);}
+    12% {opacity: 1; transform: translateX(0px);}
+    13% {opacity: 1; transform: translateX(800px);}
+    100% {opacity: 1; transform: translateX(800px);}
+  }
+  /* Group 1 */
+  
+  /* Group 2 */
+  div.deal-message-3 {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    font-size: 70px;
+    font-weight:bold;
+    opacity: 0;
+    animation-name: deal-message-3-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-3-animated {
+    0% {opacity: 1; transform: translateX(1500px);}
+    13% {opacity: 1; transform: translateX(1500px);}
+    14% {opacity: 1; transform: translateX(0px);}
+    23% {opacity: 1; transform: translateX(0px);}
+    24% {opacity: 1; transform: translateX(-1500px);}
+    100% {opacity: 1; transform: translateX(-1500px);}
+  }
+  
+  div.deal-message-4 {
+    position: absolute;
+    top: 30px;
+    left: 300px;
+    font-size: 70px;
+    font-weight:bold;
+    opacity: 0;
+    animation-name: deal-message-4-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-4-animated {
+    0% {opacity: 1; transform: translateX(1500px);}
+    15% {opacity: 1; transform: translateX(1500px);}
+    16% {opacity: 1; transform: translateX(0px);}
+    25% {opacity: 1; transform: translateX(0px);}
+    26% {opacity: 1; transform: translateX(-1500px);}
+    100% {opacity: 1; transform: translateX(-1500px);}
+  }
+  
+  div.deal-message-5 {
+    position: absolute;
+    top: 30px;
+    left: 540px;
+    font-size: 70px;
+    font-weight:bold;
+    opacity: 0;
+    animation-name: deal-message-5-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-5-animated {
+    0% {opacity: 1; transform: translateX(1500px);}
+    17% {opacity: 1; transform: translateX(1500px);}
+    18% {opacity: 1; transform: translateX(0px);}
+    27% {opacity: 1; transform: translateX(0px);}
+    28% {opacity: 1; transform: translateX(-1500px);}
+    100% {opacity: 1; transform: translateX(-1500px);}
+  }
+  
+  div.minshew-container-1 {
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+    animation-name: deal-minshew-container-1-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  img.minshew-cartoon-1 {
+    width: 130px;
+    height: auto;
+  }
+  
+  @keyframes deal-minshew-container-1-animated {
+    0% {opacity: 1; transform: translateX(1500px);}
+    19% {opacity: 1; transform: translateX(1500px);}
+    20% {opacity: 1; transform: translateX(0px);}
+    29% {opacity: 1; transform: translateX(0px);}
+    30% {opacity: 1; transform: translateX(1500px);}
+    100% {opacity: 1; transform: translateX(1500px);}
+  }
+  /* Group 2 */
+  
+  /* Group 3 */
+  div.deal-message-6 {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    font-size: 70px;
+    font-weight:bold;
+    opacity: 0;
+    animation-name: deal-message-6-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-6-animated {
+    0% {opacity: 0;}
+    30% {opacity: 0; transform: translateX(0px);}
+    40% {opacity: 1; transform: translateX(0px);}
+    41% {opacity: 1; transform: translateX(-1500px);}
+    100% {opacity: 1; transform: translateX(-1500px);}
+  }
+  /* Group 3 */
+  
+  /* Group 4 */
+  div.deal-message-7 {
+    position: absolute;
+    top: 35px;
+    left: 200px;
+    font-size: 60px;
+    font-weight: bold;
+    opacity: 0;
+    animation-name: deal-message-7-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  @keyframes deal-message-7-animated {
+    0% {opacity: 1; transform: translateX(1500px);}
+    42% {opacity: 1; transform: translateX(1500px);}
+    43% {opacity: 1; transform: translateX(0px);}
+    52% {opacity: 1; transform: translateX(0px);}
+    53% {opacity: 1; transform: translateX(1500px);}
+    100% {opacity: 1; transform: translateX(1500px);}
+  }
+  
+  div.minshew-container-2 {
+    position: absolute;
+    opacity: 0;
+    animation-name: deal-minshew-container-2-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  img.minshew-cartoon-2 {
+    width: 190px;
+    height: auto;
+  }
+  
+  @keyframes deal-minshew-container-2-animated {
+    0% {opacity: 1; transform: translateX(-1500px);}
+    44% {opacity: 1; transform: translateX(-1500px);}
+    45% {opacity: 1; transform: translateX(0px);}
+    54% {opacity: 1; transform: translateX(0px);}
+    55% {opacity: 1; transform: translateX(-1500px);}
+    100% {opacity: 1; transform: translateX(-1500px);}
+  }
+  /* Group 4 */
+  
+  /* Group 5 */
+  div.deal-message-8 {
+    position: absolute;
+    top: 30px;
+    left: 160px;
+    font-size: 70px;
+    font-weight: bold;
+    opacity: 0;
+    animation-name: deal-message-8-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-8-animated {
+    0% {opacity: 0; transform: translate(0px);}
+    55% {opacity: 0; transform: translate(0px);}
+    65% {opacity: 1; transform: translate(0px);}
+    67% {opacity: 1; transform: translate(-1500px);}
+    100% {opacity: 1; transform: translate(-1500px);}
+  }
+  
+  div.deal-message-9 {
+    position: absolute;
+    top: 30px;
+    left: 220px;
+    font-size: 70px;
+    font-weight: bold;
+    opacity: 0;
+    animation-name: deal-message-9-animated;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes deal-message-9-animated {
+    0% {opacity: 1; transform: translate(1500px);}
+    67% {opacity: 1; transform: translate(1500px);}
+    68% {opacity: 1; transform: translate(0px);}
+    100% {opacity: 1; transform: translate(0px);}
+  }
+  
+  /* Group 5 */
+  div.search-window {
+    background-color: #008080;
+    width: 19%;
+    height: 140px;
+    top: -265px;
+    position: relative;
+    text-align: center;
+    left: 80%;
+    color: white;
+    font-size: 30px;
+    box-shadow: 1px 1px 1px 1px #004d4d;
+    transition: .2s;
+    transition-timing-function:ease-out;
+    overflow: hidden;
+  }
+  
+  /* Top header styles */
+  section.top-header {
+    background-color: #4d4d4d;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #4d4d4d;
+  }
+  
+  .header-coupon-container {
+    position: relative;
+    width: 20%;
+    height: 45px;
+    padding: 0;
+  }
+  
+  .savings-header-position {
+    width: 100%;
+  }
+  
+  #button-div {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-transform: uppercase;
+    background-color: #008080;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 0;
+    box-shadow: 1px 1px 1px 1px #004d4d;
+  }
+  
+  #button-div:hover {
+    background-color: #00b3b3;
+  }
+  
+  /* Styles for Sticky Header */
+  .logo {
+    max-width: 210px;
+    height: auto;
+    padding: 20px 0;
+  }
+  
+  input[type=text] {
+    position: absolute;
+    right: 0%;
+    height: 40px;
+    width: 170px;
+    top: 45px;
+    right: 50px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 7px;
+    background-color: white;
+    transition: .2s;
+    transition-delay: .1s;
+    transition-timing-function:ease-in-out;
+  }
+  
+  div.search-window:hover input[type=text] {
+    width: 32%;
+    right: 34%;
+  }
+  
+  /* Start of Transitions that are based on hovering over the Search div container */
+  div.search-window:hover {
+    height: 740px;
+    width: 100%;
+    left: 0;
+    background-color: #272727;
+    opacity: .98;
+  }
+  
+  div.parent-box {
+    width: 0;
+    height: 0;
+    float: right;
+    background-color: #008080;
+    visibility: hidden;
+    opacity: 0;
+    transition-timing-function:ease-out;
+    transition: .2s;
+  }
+  
+  div.search-window:hover div.parent-box {
+    width: 60%;
+    height: 520px;
+    margin: 110px 20% 0 20%;
+    padding: .5% 0;
+    align-content: center;
+    visibility: visible;
+    background-color: #272727;
+    animation: change-parent-opacity .1s forwards;
+    animation-delay: .3s;
+    animation-timing-function: ease-in;
+  }
+  
+  @keyframes change-parent-opacity {
+    from {opacity: 0;}
+    to {opacity: .98;}
+  }
+  
+  /* This contains all child boxes that show up when hovering over Search */
+  div.child-box {
+    width: 0;
+    height: 0;
+    background-color: #4d4d4d;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    display: inline-block;
+    position: relative;
+    transition-timing-function:ease-out;
+    transition: width .2s, height .2s, opacity 1s;
+  }
+  
+  div.search-window:hover div.child-box {
+    opacity: 1;
+    width: 25%;
+    height: 120px;
+    background-color: #008080;
+    margin: 1%;
+    visibility: visible;
+    overflow: hidden;
+    text-align: left;
+  }
+  
+  div.child-box-logo {
+    width: 0;
+    height: 0;
+    background-color: #4d4d4d;
+    margin: 0;
+    opacity: 0;
+    display: none;
+    transition-timing-function:ease-out;
+    transition: width .2s, height .2s, opacity 2s;
+  }
+  
+  div.search-window:hover div.child-box-logo {
+    opacity: 1;
+    width: 25%;
+    height: 100px;
+    background-color: #272727;
+    margin: 1%;
+    display: inline-block;
+  }
+  
+  div.child-box:hover {
+    animation: widen .2s forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  div.child-box:hover span.icon-text{
+    animation: shift-right .5s forwards;
+    animation-delay: 0;
+    animation-timing-function: ease-in;
+  }
+  
+  div.child-box:hover img.image-visibility {
+    animation: change-opacity .2s forwards;
+    animation-delay: .1s;
+    animation-timing-function: ease-in;
+  }
+  
+  div.child-box:hover span.shop-text {
+    animation: shift-left .2s forwards;
+    animation-delay: .1s;
+    animation-timing-function: ease-in;
+  }
+  
+  img.image-visibility {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  
+  div.search-window:hover img.image-visibility {
+    display: flex;
+    opacity: .2;
+  }
+  
+  span.icon-text {
+    font-size: 20px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    left: 15%;
+    display: none;
+    top: 80px;
+  }
+  
+  div.search-window:hover span.icon-text {
+    display:flex;
+  }
+  
+  span.shop-text {
+    font-size: 20px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #00cccc;
+    background-color: white;
+    text-decoration: none;
+    position: absolute;
+    left:0;
+    transform: translateX(500px);
+    padding:2px;
+    width: 100%;
+    display: none;
+    top: 50px;
+  }
+  
+  div.search-window:hover span.shop-text {
+    display: flex;
+  }
+  
+  @keyframes change-opacity {
+    from {opacity: .2; top: 10px; width: 100px; height: auto;}
+    to {opacity: 1; top: 0; width: 120px; height: auto;}
+  }
+  
+  @keyframes widen {
+    from {width: 25%; background-color: #008080;}
+    to {width: 30%; background-color: #00cccc;}
+  }
+  
+  @keyframes shift-right {
+    0% {left: 15%;}
+    15% {transform: translateX(100px);}
+    100% {transform: translateX(100px);}
+  }
+  
+  @keyframes shift-left {
+    from {transform: translateX(500px);}
+    to {transform: translateX(149px);}
+  }
+  
+  img.logo-thumbnail {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    opacity: .5;
+  }
+  
+  main.main-container {
+    width: 100%;
+  }
+  
+  h2 {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .salute-link {
+    background-color: #cccccc;
+    height: 350px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-bottom: 200px;
+  }
+  
+  .wear-link {
+    background-color: #fbfbfb;
+    height: 300px;
+    width: 50%;
+    float: right;
+    border: 1px solid #cccccc;
+    padding-bottom: 200px;
+  }
+  
+  .nfl100-link {
+    background-color: #fbfbfb;
+    height: 300px;
+    width: 50%;
+    border: 1px solid #cccccc;
+    padding-bottom: 200px;
+  }
+  
+  .minshew-link {
+    height: 270px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-bottom: 200px;
+    background-color: #cccccc;
+  }
+  
+  .retired-link {
+    background-color: #fbfbfb;
+    height: 230px;
+    width: 50%;
+    float: right;
+    border: 1px solid #cccccc;
+    padding-bottom: 250px;
+  }
+  
+  .season25-link {
+    background-color: #fbfbfb;
+    height: 230px;
+    width: 50%;
+    border: 1px solid #cccccc;
+    padding-bottom: 250px;
+  }
+  
+  .brand-link {
+    background-color: #cccccc;
+    height: 200px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-bottom: 100px;
+    padding-top: 40px;
+  }
+  
+  .sideline-link {
+    background-color: #fbfbfb;
+    height: 420px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  /*Sections pictures for homepage*/
+  h2:hover{
+      font-size: 23px;
+  }
+  
+  .salute{
+    width: 1795px;
+    height: 450px;
+    max-width: 100%
+  }
+  
+  .NFL100{
+    width: 400px;
+    height: 400px;
+    max-width: 100%
+  }
+  
+  .wear{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  
+  
+  .Minshew{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  .Minshew Face{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  .Minshew Figure{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  
+  
+  .twentyfifth-Season{
+  
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  
+  .Retired-Players{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+  }
+  /*hover effect for headindings (h2)*/
+  
+  /*---------------------------------*/
+  
+  /*.fa-search {
+    font-size: 70px;
+    color: white;
+    position: absolute;
+    right: 240px;
+    top: 35px;
+    transition: .2s;
+    transition-delay: .1s;
+    transition-timing-function:ease-in-out;
+  }*/
+  
+  .sideline-background {
+    background-image: url("./backgrounds/sideline background.jpg");
+  }
+  
+  .players-link {
+    background-color: #cccccc;
+    height: 800px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  
+  .customgear-link {
+    background-color: #fbfbfb;
+    height: 420px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  .footer-coupon-container {
+    padding: 0;
+    margin:0;
+    float: left;
+    width: 100%;
+  }
+  
+  .footer-container {
+    width: 90%;
+    border: 1px solid #cccccc;
+    padding: 25px 5%;
+    margin: 0;
+    background-color: #f0f8ff;
+  }
+  
+  section.footer-inline {
+    display: inline-block;
+    width: 20%;
+    padding: 0;
+    margin:0;
+  }
+  
+  section.footer-coupon {
+    float: right;
+    margin: 25px 0 0;
+    width: 30px;
+    height: 30px;
+  }
+  
+  ul.footer-block {
+    margin: 0;
+    padding: 0;
+  }
+  
+  a.footer-link-hover {
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+    margin:0;
+    padding:0;
+  }
+  
+  .footer-link-hover:hover {
+    text-decoration: underline;
+  }
+  
+  li.footer-links {
+    display: block;
+    padding: 10px 0;
+    text-indent: 10px;
+    margin:0;
+  }
+  
+  h3 {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 15px;
+    color: black;
+    padding: 15px 0 10px 0;
+    margin:0;
+  }
+  
+  .footer-2-container {
+    width: 100%;
+    padding: 25px 0px 25px 0px;
+    background-color: #cccccc;
+    border: 1px solid #cccccc;
+  }
+  
+  p.center-aligned {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+  }
