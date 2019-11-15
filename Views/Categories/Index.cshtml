@@ -44,11 +44,6 @@
 	{
 		@foreach (var item in Model.Products)
 		{
-			string selected = "";
-            	if (item.ProductID == (int?)ViewData["ProductID"])
-            	{
-                	selected = "success";
-            	}
 			<div class="WTF-box">
 				<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
 				<p style="text-align:center; font-size:12px;"> 
