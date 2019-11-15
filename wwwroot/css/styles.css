@@ -43,7 +43,6 @@
     text-align: center;
     background-color: #008080;
     margin: 0;
-    /*box-shadow: 1px 1px 1px 1px #004d4d;*/
   }
   
   a.top-links {
@@ -708,7 +707,7 @@
   
   /*Sections pictures for homepage*/
   h2:hover{
-      font-size: 23px;
+    font-size: 23px;
   }
   
   .salute{
@@ -760,19 +759,6 @@
     max-width: 100%;
   }
   /*hover effect for headindings (h2)*/
-  
-  /*---------------------------------*/
-  
-  /*.fa-search {
-    font-size: 70px;
-    color: white;
-    position: absolute;
-    right: 240px;
-    top: 35px;
-    transition: .2s;
-    transition-delay: .1s;
-    transition-timing-function:ease-in-out;
-  }*/
   
   .sideline-background {
     background-image: url("./backgrounds/sideline background.jpg");
@@ -872,3 +858,170 @@
     text-align: center;
     color: black;
   }
+
+  /* ---------------------------------------------------------*/
+/*Register Page */ /*Login Page This needs a class since it probably only affects h1*/
+/*h1{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+ }
+ 
+ p{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+ }*/
+ 
+ /* Find where this is in Merv's code */
+ .container {
+   padding: 16px;
+   background-color: white;
+   border-style: solid;
+   border-width: 1 px;
+   border-color:#cccccc;
+   width: 40%;
+   height: 90%;
+   position: static;
+   left: 30%;
+   margin-top: 20px;
+   margin-left: 30%;
+   margin-bottom:20px;
+ }
+ 
+ /* Full-width input fields */
+ input[type=email], input[type=password] {
+   width: 70%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   background: #f1f1f1;
+ }
+ 
+ input[type=email]:focus, input[type=password]:focus {
+   width: 70%;
+   background-color: #ddd;
+   outline: none;
+ }
+ 
+ /* Overwrite default styles of hr */
+ hr {
+   border: 1px solid #f1f1f1;
+   margin-bottom: 25px;
+   width: 100%;
+ }
+ 
+ /* Set a style for the submit/register button */
+ .registerbtn {
+   background-color: #008080;
+   color: white;
+   padding: 16px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 70%;
+   opacity: 0.9;
+   position: static;
+ }
+ 
+ .registerbtn:hover {
+   opacity:1;
+   font-weight:bold; 
+ }
+ 
+ /* Set a grey background color and center the text of the "sign in" section */
+ .signin {
+   text-align: center;
+ }
+ /* ---------------------------------------------------------*/
+ /*about us page*/
+ .our-business{
+   background-color: white;
+   border: 2px solid #ddd;
+   border-radius: 4px;
+   padding: 5px;
+   width: 30%;
+   height: 70%;
+   position: static;
+   margin-bottom:1%;
+   margin-left:10%;
+   border-color: #008080;
+ }
+ 
+ .our-promise{
+   background-color: white;
+   border: 2px solid #ddd;
+   border-radius: 4px;
+   padding: 5px;
+   width: 30%;
+   height: 70%;
+   position: static;
+   margin-bottom:1%;
+   margin-left:10%;
+   border-color: #008080;
+ }
+ 
+ .our-contacts{
+   background-color: white;
+   border: 2px solid #ddd;
+   border-radius: 4px;
+   padding: 5px;
+   width: 30%;
+   height: 70%;
+   position: static;
+   margin-bottom:1%;
+   margin-left:10%;
+   border-color: #008080;
+ }
+ 
+ .about-us-image{
+   float:right;
+   margin-right:10%;
+   border: 2px solid #ddd;
+   border-radius: 4px;
+   padding: 8px;
+   border-color: #008080;
+ }
+ /*----------------------------------------------------------*/
+ /*Browse Products Page*/
+ 
+ .your-selection{
+   border-style: solid;
+   border-width: 1px;
+   border-bottom-style:none;
+   border-left-style:none;
+   width: 15%;
+   padding-left:2%;
+   padding-top:2%;
+   margin-right:0%;
+   display:inline-block;
+ }
+ 
+ .hr-yourSelection{
+   border-color:grey;
+   width: 60%;
+   margin-left: 0%;
+ }
+ 
+ 
+ .main-box{
+   border-style: solid;
+   border-width: 1px;
+   border-top-style:none;
+   border-bottom-style:none;
+   border-left-style:none;
+   border-right-style:none;
+   width: 80%;
+   display:inline-block;
+   margin-left:2%;
+ }
+ 
+ /* inside main box*/
+ 
+ .WTF-box{
+   width:30%;
+   height:45%;
+   float:left;
+ }
+ .WTF-image{
+   width:90%;
+   height:90%;
+ }
+ 

@@ -46,7 +46,6 @@ namespace FanCentral2.Controllers
 
             return View(viewModel);
         }
-
         
 
         private bool CategoryExists(int id)
