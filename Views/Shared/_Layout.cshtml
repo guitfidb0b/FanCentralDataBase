@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
-    @Html.Partial("_HeaderPartial")
+    @await Html.PartialAsync("_HeaderPartial")
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -37,6 +37,6 @@
         </main>
     </div>
 
-    @Html.Partial("_FooterPartial")
+    @await Html.PartialAsync("_FooterPartial")
 </body>
 </html>
