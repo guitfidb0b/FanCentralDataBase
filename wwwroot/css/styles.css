@@ -53,7 +53,25 @@
   .top-links:hover {
     text-decoration: underline;
   }
-  
+
+  a.category-links {
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin-top: 10px;
+  }
+  .category-links:visited {
+    text-decoration: none;
+    color: black;
+  }
+  .category-links:hover {
+    text-decoration: underline;
+    color: black;
+  }
+  .category-links:active {
+    text-decoration: none;
+    color: black;
+  }
   img.cart-icon-size {
     width: 40px;
     height: auto;
@@ -989,11 +1007,14 @@
    border-bottom-style:none;
    border-left-style:none;
    width: 15%;
+   /*position: inline;*/
    float: left;
    padding-left:2%;
    padding-top:10px;
    padding-bottom: 25px;;
-   margin-right:0%;
+   margin-right:0;
+   margin-bottom: 20px;
+   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
  }
  
  .hr-yourSelection{
@@ -1008,7 +1029,7 @@
 }*/
  
  
- .main-box{
+ div.main-box{
    border-style: solid;
    border-width: 1px;
    border-top-style:none;
@@ -1016,16 +1037,20 @@
    border-left-style:none;
    border-right-style:none;
    width: 80%;
+   /*display: inline-block;*/
    float: left;
    margin-left:2%;
+ }
+ #put-this-inline{
+   position: inline;
  }
  
  /* inside main box*/
  
- .WTF-box{
+ div.WTF-box{
    width:25%;
    height:400px;
-   float:left;
+   display: inline-block;
  }
  .WTF-image{
    width:90%;

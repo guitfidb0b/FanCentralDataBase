@@ -3,46 +3,54 @@
 @{
     ViewData["Title"] = "Browse Categories";
 }
-<h4> Jacksonville Jaguars / <b style="color: red;">PUT CATEGORY HERE</b> </h4>
-<div class="your-selection">
-	<h3>All Departments</h3>
-	<hr class="hr-yourSelection" />
+
+@if (Model.Categories != null)
+{
+	<h4> Jacksonville Jaguars / 
 	@foreach (var item in Model.Categories)
 	{
-		string selected = "";
-		if (item.CategoryID == (int?)ViewData["CategoryID"])
-        {
-            selected = "success";
-        }
-		<div class="@selected">
-			<a asp-action="Index" asp-route-id="@item.CategoryID">@Html.DisplayFor(modelItem => item.CategoryName)</a><br />
-		</div>
-	}
-	
-	<hr class="hr-yourSelection" />	
-	<h3> Price Range </h3>
-	<input type="radio" name="price" value="$10 to $20"> $10 to $20<br />
-	<input type="radio" name="price" value="$20 to $40"> $20 to $40<br />
-	<input type="radio" name="price" value="$40 to $60"> $40 to $60<br />
-	<hr class="hr-yourSelection" />
-</div>
-<div class="main-box">
-@if (Model.Products != null)
-{
-	@foreach (var item in Model.Products)
-	{
-		string selected = "";
-            if (item.ProductID == (int?)ViewData["ProductID"])
+            if (item.CategoryID == (int?)ViewData["CategoryID"])
             {
-                selected = "success";
+				<b style="color: #008080;">@item.CategoryName</b>
             }
-		<div class="WTF-box @selected">
-			<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
-			<p style="text-align:center; font-size:12px;"> 
-				<b>@item.Price |</b> 
-				@item.Description 
-			</p>
-		</div>
 	}
+	</h4>
 }
-</div>
+
+	<div class="your-selection">
+		<h3>All Departments</h3>
+		<hr class="hr-yourSelection" />
+		@foreach (var item in Model.Categories)
+		{
+			string selected = "";
+			if (item.CategoryID == (int?)ViewData["CategoryID"])
+        	{
+            	selected = "success";
+        	}
+			<div class="@selected">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">@Html.DisplayFor(modelItem => item.CategoryName)</a><br />
+			</div>
+		}
+	
+		<hr class="hr-yourSelection" />	
+		<h3> Price Range </h3>
+		<input type="radio" name="price" value="$10 to $20"> $10 to $20<br />
+		<input type="radio" name="price" value="$20 to $40"> $20 to $40<br />
+		<input type="radio" name="price" value="$40 to $60"> $40 to $60<br />
+		<hr class="hr-yourSelection" />
+	</div>
+	<div class="main-box">
+	@if (Model.Products != null)
+	{
+		@foreach (var item in Model.Products)
+		{
+			<div class="WTF-box">
+				<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
+				<p style="text-align:center; font-size:12px;"> 
+					<b>@item.Price |</b> 
+					@item.Description 
+				</p>
+			</div>
+		}
+	}
+	</div>
