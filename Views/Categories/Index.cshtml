@@ -3,66 +3,46 @@
 @{
     ViewData["Title"] = "Browse Categories";
 }
-
-<h1>Browse Categories</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Categories)
+<h4> Jacksonville Jaguars / <b style="color: red;">PUT CATEGORY HERE</b> </h4>
+<div class="your-selection">
+	<h3>All Departments</h3>
+	<hr class="hr-yourSelection" />
+	@foreach (var item in Model.Categories)
+	{
+		string selected = "";
+		if (item.CategoryID == (int?)ViewData["CategoryID"])
         {
-            string selectedRow = "";
-            if (item.CategoryID == (int?)ViewData["CategoryID"])
-            {
-                selectedRow = "success";
-            }
-        <tr class="@selectedRow">
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                <a asp-action="Index" asp-route-id="@item.CategoryID">Select</a>
-            </td>
-            
-        </tr>
+            selected = "success";
         }
-    </tbody>
-</table>
-
+		<div class="@selected">
+			<a asp-action="Index" asp-route-id="@item.CategoryID">@Html.DisplayFor(modelItem => item.CategoryName)</a><br />
+		</div>
+	}
+	
+	<hr class="hr-yourSelection" />	
+	<h3> Price Range </h3>
+	<input type="radio" name="price" value="$10 to $20"> $10 to $20<br />
+	<input type="radio" name="price" value="$20 to $40"> $20 to $40<br />
+	<input type="radio" name="price" value="$40 to $60"> $40 to $60<br />
+	<hr class="hr-yourSelection" />
+</div>
+<div class="main-box">
 @if (Model.Products != null)
 {
-    <h3>Available Products in this category</h3>
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>Image</th>
-            <th>Description</th>
-            <th>Price</th>
-        </tr>
-
-        @foreach (var item in Model.Products)
-        {
-            string selectedRow = "";
+	@foreach (var item in Model.Products)
+	{
+		string selected = "";
             if (item.ProductID == (int?)ViewData["ProductID"])
             {
-                selectedRow = "success";
+                selected = "success";
             }
-            <tr class="@selectedRow">
-                <td>
-                    <img src="~/Images/Products/@item.ImageName" />
-                </td>
-                <td>
-                    @item.Description
-                </td>
-                <td>
-                    @item.Price
-                </td>
-            </tr>
-        }
-    </table>
+		<div class="WTF-box @selected">
+			<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
+			<p style="text-align:center; font-size:12px;"> 
+				<b>@item.Price |</b> 
+				@item.Description 
+			</p>
+		</div>
+	}
 }
+</div>
