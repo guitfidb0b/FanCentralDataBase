@@ -1048,12 +1048,13 @@
  /* inside main box*/
  
  div.WTF-box{
-   width:25%;
-   height:400px;
+   width:30%;
+   height:450px;
    display: inline-block;
+   margin-bottom: 50px;
  }
  .WTF-image{
-   width:90%;
+   width:100%;
    height:auto;
  }
  
