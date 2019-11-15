@@ -46,8 +46,6 @@ namespace FanCentral2.Controllers
 
             return View(viewModel);
         }
-        
-
         private bool CategoryExists(int id)
         {
             return _context.Categories.Any(e => e.CategoryID == id);
