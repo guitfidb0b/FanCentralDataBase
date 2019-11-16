@@ -1,0 +1,21 @@
+@model FanCentral2.Models.ViewModels.BrowseProductCategories
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+<!-- Show the Product image, quantity selector, price calculation, add to cart, continue shopping  -->
+@if (Model.Products != null)
+{
+    @foreach (var item in Model.Products)
+    {
+        @if (item.ProductID == (int?)ViewData["MyProductID"])
+        {
+            <img src="~/Images/Products/@item.ImageName" />
+        }
+    }
+}
+
+ 
+
+
