@@ -27,8 +27,8 @@
         	{
             	selected = "success";
         	}
-			<div class="@selected">
-				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">@Html.DisplayFor(modelItem => item.CategoryName)</a><br />
+			<div class="category-height @selected">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID"><p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p></a>
 			</div>
 		}
 	
@@ -46,7 +46,7 @@
 		{
 			<div class="WTF-box">
 				<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
-				<p style="text-align:center; font-size:12px;"> 
+				<p style="text-align:center; font-size:14px;"> 
 					<b>@item.Price |</b> 
 					@item.Description 
 				</p>
