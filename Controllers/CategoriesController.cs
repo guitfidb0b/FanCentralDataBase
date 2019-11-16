@@ -21,8 +21,11 @@ namespace FanCentral2.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index(int? id, int? productID)
+        public async Task<IActionResult> Index(int? id, int? productID, string searchString)
         {
+            ViewData["SearchString"] = searchString;
+            Console.WriteLine("***************************************************");
+            Console.WriteLine("This is a test {0} ", searchString);
             //This is how we load all data into the view (using eager loading)
             var viewModel = new BrowseProductCategories();
             viewModel.Categories = await _context.Categories
@@ -42,6 +45,12 @@ namespace FanCentral2.Controllers
             {
                 ViewData["ProductID"] = productID.Value;
                 viewModel.ProductCategories = viewModel.Products.Where(x => x.ProductID == productID).Single().ProductCategories;
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {   
+                var products = from p in _context.Products
+                                select p;
+                viewModel.Products = viewModel.Products.Where(p => p.Description.ToUpper().Contains(searchString.ToUpper()));
             }
 
             return View(viewModel);
