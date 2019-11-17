@@ -141,6 +141,9 @@ namespace FanCentral2.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Quanity")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("OrderedProductID");
 
                     b.HasIndex("OrderID");
