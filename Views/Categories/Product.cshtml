@@ -13,7 +13,7 @@
         {
             <img src="~/Images/Products/@item.ImageName" />
             <p> @item.Description </p>
-            <p> @item.Price </p>
+            <p> @item.Price.ToString("c") </p>
             @if(item.ProductID == (int?)ViewData["AddToCart"])
             {
                 <p>Success!!!!!</p>
