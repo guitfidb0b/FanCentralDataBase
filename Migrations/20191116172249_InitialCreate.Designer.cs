@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FanCentral2.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20191115135654_InitialCreate")]
+    [Migration("20191116172249_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,6 +141,9 @@ namespace FanCentral2.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quanity")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("OrderedProductID");

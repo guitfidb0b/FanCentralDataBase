@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using FanCentral2.Infrastructure;
 using FanCentral2.Data;
 using FanCentral2.Models;
 using FanCentral2.Models.ViewModels;
@@ -57,8 +58,6 @@ namespace FanCentral2.Controllers
 
         public async Task<IActionResult> Product(int? id)
         {
-            Console.WriteLine("***************************************");
-            Console.WriteLine("{0}", id);
             var viewModel = new BrowseProductCategories();
             viewModel.Products = await _context.Products
                 .AsNoTracking()
@@ -67,13 +66,59 @@ namespace FanCentral2.Controllers
 
             if (id != null)
             {
-                Console.WriteLine("***************************************");
-                ViewData["MyProductID"] = id.Value;
-                //ViewData["MyProductID"] = productID.Value;
+                ViewData["ProductID"] = id.Value;
                 Product product = viewModel.Products.Where(x => x.ProductID == id).Single();
             }
 
             return View(viewModel);
+        }
+
+        public ViewResult Cart(string returnUrl)
+        {
+            return View(new BrowseProductCategories
+            {
+                Cart = GetCart(),
+                ReturnUrl = returnUrl
+            });
+        }
+
+        public RedirectToActionResult AddToCart(int productID, string returnUrl)
+        {
+            Product product = _context.Products
+            .FirstOrDefault(p => p.ProductID == productID);
+            if (product != null)
+            {
+                Cart cart = GetCart();
+                cart.AddItem(product, 1);
+                SaveCart(cart);
+            }
+            
+            return RedirectToAction("Cart", new { returnUrl });
+        }
+
+        public RedirectToActionResult RemoveFromCart(int productId, string returnUrl)
+        {
+            Product product = _context.Products
+            .FirstOrDefault(p => p.ProductID == productId);
+
+            if (product != null)
+            {
+                Cart cart = GetCart();
+                cart.RemoveLine(product);
+                SaveCart(cart);
+            }
+            return RedirectToAction("Cart", new { returnUrl });
+        }
+
+        private Cart GetCart()
+        {
+            Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+            return cart;
+        }
+
+        private void SaveCart(Cart cart)
+        {
+            HttpContext.Session.SetJson("Cart", cart);
         }
 
         private bool CategoryExists(int id)

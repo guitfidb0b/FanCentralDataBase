@@ -152,6 +152,7 @@ namespace FanCentral2.Migrations
                 {
                     OrderedProductID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Quanity = table.Column<int>(nullable: false),
                     OrderID = table.Column<int>(nullable: false),
                     ProductID = table.Column<int>(nullable: false)
                 },

@@ -4,14 +4,29 @@
     ViewData["Title"] = "Product";
 }
 
-<!-- Show the Product image, quantity selector, price calculation, add to cart, continue shopping  -->
+<!-- quantity selector, price calculation, add to cart, continue shopping  -->
 @if (Model.Products != null)
 {
     @foreach (var item in Model.Products)
     {
-        @if (item.ProductID == (int?)ViewData["MyProductID"])
+        @if (item.ProductID == (int?)ViewData["ProductID"])
         {
             <img src="~/Images/Products/@item.ImageName" />
+            <p> @item.Description </p>
+            <p> @item.Price </p>
+            @if(item.ProductID == (int?)ViewData["AddToCart"])
+            {
+                <p>Success!!!!!</p>
+            }
+            <form id="@item.ProductID" asp-action="AddToCart"
+                asp-controller="Categories" method="post">
+                <input type="hidden" name="productID" value="@item.ProductID" />
+                <input type="hidden" name="returnUrl"
+                    value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit">
+                    Add to Cart
+                </button>
+            </form>
         }
     }
 }
