@@ -21,6 +21,17 @@ namespace FanCentral2.Controllers
             _context = context;
         }
 
+        //public ViewResult Checkout() => View(new GuestOrder());
+
+        public ViewResult Checkout()
+        {
+            return View(new BrowseProductCategories
+            {
+                GuestOrder = GetGuestOrder()
+                //ReturnUrl = returnUrl
+            });
+        }
+        
         // GET: Categories
         public async Task<IActionResult> Index(int? id, int? productID, string searchString)
         {
@@ -114,6 +125,12 @@ namespace FanCentral2.Controllers
         {
             Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
             return cart;
+        }
+
+        private GuestOrder GetGuestOrder()
+        {
+            GuestOrder guestOrder = new GuestOrder();
+            return guestOrder;
         }
 
         private void SaveCart(Cart cart)

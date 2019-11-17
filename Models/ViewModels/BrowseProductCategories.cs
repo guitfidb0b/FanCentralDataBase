@@ -13,5 +13,7 @@ namespace FanCentral2.Models.ViewModels
 
         public Cart Cart { get; set; }
         public string ReturnUrl { get; set; }
+
+        public GuestOrder GuestOrder { get; set; }
     }
 }

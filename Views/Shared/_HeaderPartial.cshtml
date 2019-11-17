@@ -45,7 +45,7 @@
     <div class="search-window"><!-- The search window that uses many transitions and animations-->
       <img src="~/Images/Icons/search-icon.png" class="search-icon-size" />
       <form asp-controller="Categories" asp-action="Index" asp-route-id="22" method="get">
-        <input type="text" name="SearchString" value="@ViewData["SearchString"]" />
+        <input type="text" name="SearchString" value="@ViewData["SearchString"]" class="header-search-bar" />
         <input type="submit" value="Search" style="visibility: hidden;" />
       </form>
       <div class="parent-box">

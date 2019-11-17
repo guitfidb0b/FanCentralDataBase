@@ -440,7 +440,7 @@
     padding: 20px 0;
   }
   
-  input[type=text] {
+  input.header-search-bar {
     position: absolute;
     right: 0%;
     height: 40px;
@@ -910,7 +910,7 @@
  }
  
  /* Full-width input fields */
- input[type=email], input[type=password] {
+ /*input[type=email], input[type=password] {
    width: 70%;
    padding: 15px;
    margin: 5px 0 22px 0;
@@ -921,7 +921,7 @@
    width: 70%;
    background-color: #ddd;
    outline: none;
- }
+ }*/
  
  /* Overwrite default styles of hr */
  
