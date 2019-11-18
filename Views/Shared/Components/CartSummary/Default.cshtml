@@ -1,0 +1,9 @@
+@model Cart
+<div>
+    @if (Model.Lines.Count() > 0)
+    {
+        <small>
+            @Model.Lines.Sum(x => x.Quantity)
+        </small>
+    }
+</div>
