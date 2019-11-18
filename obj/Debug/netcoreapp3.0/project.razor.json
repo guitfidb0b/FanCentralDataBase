@@ -14389,6 +14389,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Admin/Delete.cshtml",
+      "TargetPath": "Views/Admin/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_HeaderPartial.cshtml",
       "TargetPath": "Views/Shared/_HeaderPartial.cshtml",
       "FileKind": "mvc"
@@ -14399,8 +14404,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Products/Create.cshtml",
-      "TargetPath": "Views/Products/Create.cshtml",
+      "FilePath": "Views/Admin/Index.cshtml",
+      "TargetPath": "Views/Admin/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14409,13 +14414,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/_ViewImports.cshtml",
-      "TargetPath": "Views/_ViewImports.cshtml",
+      "FilePath": "Views/Admin/Details.cshtml",
+      "TargetPath": "Views/Admin/Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Products/Index.cshtml",
-      "TargetPath": "Views/Products/Index.cshtml",
+      "FilePath": "Views/_ViewImports.cshtml",
+      "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14424,23 +14429,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Products/Edit.cshtml",
-      "TargetPath": "Views/Products/Edit.cshtml",
+      "FilePath": "Views/Admin/Create.cshtml",
+      "TargetPath": "Views/Admin/Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Products/Delete.cshtml",
-      "TargetPath": "Views/Products/Delete.cshtml",
+      "FilePath": "Views/Order/List.cshtml",
+      "TargetPath": "Views/Order/List.cshtml",
       "FileKind": "mvc"
     },
     {
       "FilePath": "Views/Categories/Index.cshtml",
       "TargetPath": "Views/Categories/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views/Products/Details.cshtml",
-      "TargetPath": "Views/Products/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14454,8 +14454,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Shared/_AdminLayout.cshtml",
+      "TargetPath": "Views/Shared/_AdminLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_FooterPartial.cshtml",
       "TargetPath": "Views/Shared/_FooterPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Admin/Edit.cshtml",
+      "TargetPath": "Views/Admin/Edit.cshtml",
       "FileKind": "mvc"
     },
     {

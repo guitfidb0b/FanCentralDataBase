@@ -282,11 +282,6 @@
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/FanCentral2.TagHelpers.output.cache
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/FanCentral2.RazorCoreGenerate.cache
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs
-/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Products/Create.cshtml.g.cs
-/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Products/Delete.cshtml.g.cs
-/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Products/Details.cshtml.g.cs
-/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Products/Edit.cshtml.g.cs
-/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Products/Index.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Shared/Error.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
@@ -306,3 +301,10 @@
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Product/Index.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Shared/Components/CartSummary/Default.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Order/Completed.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Order/List.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_AdminLayout.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Index.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Edit.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Create.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Delete.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Details.cshtml.g.cs

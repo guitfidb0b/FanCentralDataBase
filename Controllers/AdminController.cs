@@ -8,11 +8,11 @@ using FanCentral2.Models;
 
 namespace FanCentral2.Controllers
 {
-    public class ProductsController : Controller
+    public class AdminController : Controller
     {
         private readonly ApplicationDBContext _context;
 
-        public ProductsController(ApplicationDBContext context)
+        public AdminController(ApplicationDBContext context)
         {
             _context = context;
         }
