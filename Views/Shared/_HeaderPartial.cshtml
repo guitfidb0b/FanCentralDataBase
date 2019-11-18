@@ -1,3 +1,4 @@
+
 <section class="top-header"><!--This is the topmost banner-->
   <div class="header-coupon-container">
     <a href="login.html">
@@ -7,6 +8,9 @@
   <div class="top">
     <a asp-controller="Cart" asp-action="Index">
       <div class="cart-position">
+        <div style="position: absolute; right: 25px; text-align: center; color: white;">
+          @await Component.InvokeAsync("CartSummary")
+        </div>
         <img src="~/Images/Icons/shopping-cart.png" class="cart-icon-size" />
       </div>
     </a>
