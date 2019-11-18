@@ -1,19 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FanCentral2.Models.ViewModels
 {
-    public class BrowseProductCategories
+    public class CategoriesIndexViewModel
     {
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
-
-        public Cart Cart { get; set; }
-        public string ReturnUrl { get; set; }
-
-        public GuestOrder GuestOrder { get; set; }
     }
 }

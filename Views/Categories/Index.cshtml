@@ -1,4 +1,4 @@
-@model FanCentral2.Models.ViewModels.BrowseProductCategories
+@model FanCentral2.Models.ViewModels.CategoriesIndexViewModel
 
 @{
     ViewData["Title"] = "Browse Categories";
@@ -47,7 +47,7 @@
 	@foreach (var item in Model.Products)
 	{
 		<div class="WTF-box">
-			<a asp-action="Product" asp-route-id="@item.ProductID">
+			<a asp-controller="Product" asp-action="Index" asp-route-id="@item.ProductID">
 				<img src="~/Images/Products/@item.ImageName" alt="Product Picture" class="WTF-image">
 			</a>
 			<p style="text-align:center; font-size:14px;"> 

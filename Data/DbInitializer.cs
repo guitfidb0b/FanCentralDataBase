@@ -1,7 +1,5 @@
 using System;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using FanCentral2.Models;
 
 namespace FanCentral2.Data

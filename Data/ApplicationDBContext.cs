@@ -16,6 +16,7 @@ namespace FanCentral2.Data
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<GuestOrder> GuestOrders { get; set; }
         public DbSet<Payment> Payments {get; set; }
         public DbSet<OrderedProduct> OrderedProducts { get; set; }
 
@@ -27,6 +28,7 @@ namespace FanCentral2.Data
             modelBuilder.Entity<Address>().ToTable("Address");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<GuestOrder>().ToTable("GuestOrder");
             modelBuilder.Entity<Payment>().ToTable("Payment");
             modelBuilder.Entity<OrderedProduct>().ToTable("OrderedProduct");
         }

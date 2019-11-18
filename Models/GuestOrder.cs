@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace FanCentral2.Models
@@ -11,7 +7,7 @@ namespace FanCentral2.Models
     public class GuestOrder
     {
         [BindNever]
-        public int OrderID { get; set; }
+        public int GuestOrderID { get; set; }
 
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }

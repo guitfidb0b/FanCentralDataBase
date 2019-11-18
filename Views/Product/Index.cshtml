@@ -1,10 +1,9 @@
-@model FanCentral2.Models.ViewModels.BrowseProductCategories
+@model FanCentral2.Models.ViewModels.ProductIndexViewModel
 
 @{
     ViewData["Title"] = "Product";
 }
 
-<!-- quantity selector, price calculation, add to cart, continue shopping  -->
 @if (Model.Products != null)
 {
     @foreach (var item in Model.Products)
@@ -19,7 +18,7 @@
                 <p>Success!!!!!</p>
             }
             <form id="@item.ProductID" asp-action="AddToCart"
-                asp-controller="Categories" method="post">
+                asp-controller="Cart" method="post">
                 <input type="hidden" name="productID" value="@item.ProductID" />
                 <input type="hidden" name="returnUrl"
                     value="@ViewContext.HttpContext.Request.PathAndQuery()" />

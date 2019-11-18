@@ -1,4 +1,4 @@
-@model FanCentral2.Models.ViewModels.BrowseProductCategories
+@model FanCentral2.Models.ViewModels.CartIndexViewModel
 
 <h2>Your cart</h2>
 
@@ -39,7 +39,7 @@
 
 <div>
     <a href="@Model.ReturnUrl">Continue shopping</a>
-    <a asp-action="Checkout" asp-controller="Categories">
+    <a asp-action="Checkout" asp-controller="Order">
         Checkout
     </a>
 </div>
