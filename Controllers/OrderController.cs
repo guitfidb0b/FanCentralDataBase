@@ -17,6 +17,21 @@ namespace FanCentral2.Controllers
             repository = repoService;
             cart = cartService;
         }
+
+        public ViewResult List() => View(repository.GuestOrders.Where(o => !o.Shipped));
+
+        [HttpPost]
+        public IActionResult MarkShipped(int guestOrderID)
+        {
+            GuestOrder guestOrder = repository.GuestOrders
+                .FirstOrDefault(o => o.GuestOrderID == guestOrderID);
+            if (guestOrder != null)
+            {
+                guestOrder.Shipped = true;
+                repository.SaveOrder(guestOrder);
+            }
+            return RedirectToAction(nameof(List));
+        }
         public ViewResult Checkout() => View(new GuestOrder());
 
         [HttpPost]
