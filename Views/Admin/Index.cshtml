@@ -4,11 +4,9 @@
     ViewData["Title"] = "All Products";
     Layout = "_AdminLayout";
 }
-
 <h1>Products</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
 <form asp-action="Index" method="get">
@@ -26,7 +24,7 @@
         <label class="custom-control-label" for="customCheck">Check this custom checkbox</label>
     </div>
 </form>-->
-<table class="table">
+<table class="table table-bordered table-striped table condensed">
     <thead>
         <tr>
             <th>
@@ -50,16 +48,16 @@
             <td>
                 @foreach (var i in item.ProductCategories)
                 {
-                    @Html.DisplayFor(modelItem => i.Category.CategoryName) <br />
+                    @Html.DisplayFor(modelItem => i.Category.CategoryName)
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @item.Price.ToString("c")
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> 
+                <a asp-action="Edit" asp-route-id="@item.ProductID" class="btn btn-sm btn-warning">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@item.ProductID" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         }   
