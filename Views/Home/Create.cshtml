@@ -1,0 +1,28 @@
+  
+	<form action="">
+  <div class="login-container">
+    <h1>Create Account</h1>
+    <hr>
+	<center>
+
+    <label for="email"><!--<b>Email</b>--></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+	</br>
+    <label for="psw"><!--<b>Password</b>--></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+	</br>
+    <label for="psw-repeat"><!-- <b>Repeat Password--></b></label>
+    <input type="password" placeholder="Re-enter Password" name="psw-repeat" required>
+    <hr>
+
+    <p>By creating an account you agree to our <a href="#">
+	Terms of Service & Privacy Policy</a></p>
+
+	<button type="submit" class="registerbtn">Register</button>
+  </div>
+  </center>
+</br>
+  <div class="login-container">
+    <p>Already have an account? <a asp-controller="Home" asp-action="Login">Sign in</a></p>
+  </div>
+</form>

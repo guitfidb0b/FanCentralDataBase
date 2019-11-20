@@ -14474,8 +14474,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Home/Create.cshtml",
+      "TargetPath": "Views/Home/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Account/Login.cshtml",
       "TargetPath": "Views/Account/Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Home/Login.cshtml",
+      "TargetPath": "Views/Home/Login.cshtml",
       "FileKind": "mvc"
     },
     {
