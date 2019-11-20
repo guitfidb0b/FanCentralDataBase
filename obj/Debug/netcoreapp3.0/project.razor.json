@@ -14444,6 +14444,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Home/About.cshtml",
+      "TargetPath": "Views/Home/About.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Order/List.cshtml",
       "TargetPath": "Views/Order/List.cshtml",
       "FileKind": "mvc"
