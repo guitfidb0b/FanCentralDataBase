@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FanCentral2.Data;
 using FanCentral2.Models;
+using FanCentral2.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FanCentral2.Controllers
@@ -89,10 +91,10 @@ namespace FanCentral2.Controllers
         }
 
         // GET: Products/Create
-        /*public IActionResult Create()
+        public IActionResult Create()
         {
             return View();
-        }*/
+        }
 
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -121,35 +123,105 @@ namespace FanCentral2.Controllers
         }
 
         // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, string[] selectedCategories)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var productToUpdate = await _context.Products
+            .Include(i => i.ProductCategories)
+                .ThenInclude(i => i.Category)
+            .FirstOrDefaultAsync(m => m.ProductID == id);
+
+            if (await TryUpdateModelAsync<Product>(
+                productToUpdate,
+                "",
+                i => i.Description, i => i.ImageName, i => i.Price))
+                {
+                    UpdateProductCategories(selectedCategories, productToUpdate);
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateException)
+                    {
+                        ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                    }
+                    return RedirectToAction(nameof(Index));
+                }
+        
+            UpdateProductCategories(selectedCategories, productToUpdate);
+            PopulateAssignedCategoryData(productToUpdate);
+            return View(productToUpdate);
+        }
+
+        private void UpdateProductCategories(string[] selectedCategories, Product productToUpdate)
+        {
+            System.Console.WriteLine("##################################################");
+                System.Console.WriteLine("###############Entered IF#######################");
+            if (selectedCategories == null)
             {
-                return NotFound();
+                
+                productToUpdate.ProductCategories = new List<ProductCategory>();
+                return;
             }
-            return View(product);
+
+            var selectedCategoriesHS = new HashSet<string>(selectedCategories);
+            var productCategories = new HashSet<int>
+                (productToUpdate.ProductCategories.Select(c => c.Category.CategoryID));
+            foreach (var category in _context.Categories)
+            {
+                if (selectedCategoriesHS.Contains(category.CategoryID.ToString()))
+                {
+                    if (!productCategories.Contains(category.CategoryID))
+                    {
+                        productToUpdate.ProductCategories.Add(new ProductCategory { ProductID = productToUpdate.ProductID, CategoryID = category.CategoryID});
+                    }
+                }
+                else
+                {
+                    if (productCategories.Contains(category.CategoryID))
+                    {
+                        ProductCategory categoryToRemove = productToUpdate.ProductCategories.FirstOrDefault(i => i.CategoryID == category.CategoryID);
+                        _context.Remove(categoryToRemove);
+                    }
+                }
+            }
         }
 
         // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(int? id)
+        //[HttpPost, ActionName("Edit")]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id)
         {
+            Console.WriteLine("***********************&&&&&&&&&&&&&&&&&&&&&*******************");
             if (id == null)
             {
+                
                 return NotFound();
             }
 
-            var productToUpdate = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == id);
-            if (await TryUpdateModelAsync<Product>(
+            var productToUpdate = await _context.Products
+            .Include(i => i.ProductCategories)
+                .ThenInclude(i => i.Category)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.ProductID == id);
+
+            if (productToUpdate == null)
+            {
+                return NotFound();
+            }
+            PopulateAssignedCategoryData(productToUpdate);
+            return View(productToUpdate);
+            /*if (await TryUpdateModelAsync<Product>(
                 productToUpdate,
                 "",
                 p => p.Description, p => p.ImageName, p => p.Price))
@@ -167,7 +239,24 @@ namespace FanCentral2.Controllers
                         "see your system administrator.");
                 }
             }
-            return View(productToUpdate);
+            return View(productToUpdate);*/
+        }
+
+        private void PopulateAssignedCategoryData(Product product)
+        {
+            var allCategories = _context.Categories;
+            var productCategories = new HashSet<int>(product.ProductCategories.Select(c => c.CategoryID));
+            var viewModel = new List<AssignedCategoryData>();
+            foreach (var category in allCategories)
+            {
+                viewModel.Add(new AssignedCategoryData
+                {
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName,
+                    Assigned = productCategories.Contains(category.CategoryID)
+                });
+            }
+            ViewData["Categories"] = viewModel;
         }
 
         // GET: Products/Delete/5
@@ -224,36 +313,5 @@ namespace FanCentral2.Controllers
             return _context.Products.Any(e => e.ProductID == id);
         }
 
-        /*public ViewResult Index() => View(_context.Products);
-        public ViewResult Edit(int productId) =>
-            View(_context.Products
-                .FirstOrDefault(p => p.ProductID == productId));
-
-        [HttpPost]
-        public IActionResult Edit(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.SaveProduct(product);
-                TempData["message"] = $"{product.Name} has been saved";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(product);
-            }
-        }
-        public ViewResult Create() => View("Edit", new Product());
-
-        [HttpPost]
-        public IActionResult Delete(int productId)
-        {
-            Product deletedProduct = _context.DeleteProduct(productId);
-            if (deletedProduct != null)
-            {
-                TempData["message"] = $"{deletedProduct.Name} was deleted";
-            }
-            return RedirectToAction("Index");
-        }*/
     }
 }
