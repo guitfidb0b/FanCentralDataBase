@@ -6,14 +6,14 @@ namespace FanCentral2.Models
     public class Product
     {
         public int ProductID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter Product Description")]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter Image Name")]
         [Display(Name = "Image Name")]
         [StringLength(50)]
         public string ImageName { get; set; }
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Please enter Price")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a Positive Price")]
         public decimal Price { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
     }

@@ -308,3 +308,7 @@
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Create.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Delete.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Admin/Details.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Login.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Create.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Index.cshtml.g.cs

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using FanCentral2.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace FanCentral2.Controllers
@@ -18,9 +19,11 @@ namespace FanCentral2.Controllers
             cart = cartService;
         }
 
+        [Authorize]
         public ViewResult List() => View(repository.GuestOrders.Where(o => !o.Shipped));
 
         [HttpPost]
+        [Authorize]
         public IActionResult MarkShipped(int guestOrderID)
         {
             GuestOrder guestOrder = repository.GuestOrders

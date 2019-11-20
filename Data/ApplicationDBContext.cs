@@ -1,9 +1,12 @@
+using System;
 using FanCentral2.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace FanCentral2.Data
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
@@ -31,6 +34,9 @@ namespace FanCentral2.Data
             modelBuilder.Entity<GuestOrder>().ToTable("GuestOrder");
             modelBuilder.Entity<Payment>().ToTable("Payment");
             modelBuilder.Entity<OrderedProduct>().ToTable("OrderedProduct");
+
+            //IDK
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

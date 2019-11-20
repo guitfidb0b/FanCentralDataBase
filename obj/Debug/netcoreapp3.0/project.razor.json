@@ -14389,6 +14389,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/Index.cshtml",
+      "TargetPath": "Views/Account/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Admin/Delete.cshtml",
       "TargetPath": "Views/Admin/Delete.cshtml",
       "FileKind": "mvc"
@@ -14424,6 +14429,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/Create.cshtml",
+      "TargetPath": "Views/Account/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Product/Index.cshtml",
       "TargetPath": "Views/Product/Index.cshtml",
       "FileKind": "mvc"
@@ -14456,6 +14466,11 @@
     {
       "FilePath": "Views/Shared/_AdminLayout.cshtml",
       "TargetPath": "Views/Shared/_AdminLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Account/Login.cshtml",
+      "TargetPath": "Views/Account/Login.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using FanCentral2.Data;
 using FanCentral2.Models;
 
@@ -33,6 +34,9 @@ namespace FanCentral2
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
+            services.AddIdentity<AppUser, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<ApplicationDBContext>()
+                .AddDefaultTokenProviders();
             services.AddMemoryCache();
             services.AddSession();
         }
@@ -50,12 +54,16 @@ namespace FanCentral2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
-            app.UseSession();
+            
 
+            app.UseSession();
+            app.UseAuthentication();
+            // Authorization must be here!!
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
