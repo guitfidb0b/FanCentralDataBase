@@ -312,3 +312,6 @@
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Login.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Create.cshtml.g.cs
 /home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Account/Index.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Home/About.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Home/Login.cshtml.g.cs
+/home/fiddlerb0b/visual-studio-code/Projects/FanCentralDataBase/obj/Debug/netcoreapp3.0/Razor/Views/Home/Create.cshtml.g.cs
