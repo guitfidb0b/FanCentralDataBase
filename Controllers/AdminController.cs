@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FanCentral2.Data;
 using FanCentral2.Models;
+using FanCentral2.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FanCentral2.Controllers
@@ -89,38 +91,116 @@ namespace FanCentral2.Controllers
         }
 
         // GET: Products/Create
-        /*public IActionResult Create()
+        public IActionResult Create()
         {
+            var product = new Product();
+            product.ProductCategories = new List<ProductCategory>();
+            PopulateAssignedCategoryData(product);
             return View();
-        }*/
+        }
 
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Description,ImageName,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Description,ImageName,Price")] Product product, string[] selectedCategories)
         {
-            try
+            if (selectedCategories != null)
             {
-                if (ModelState.IsValid)
+                product.ProductCategories = new List<ProductCategory>();
+                foreach (var category in selectedCategories)
                 {
-                    _context.Add(product);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    var categoryToAdd = new ProductCategory { ProductID = product.ProductID, CategoryID = int.Parse(category)};
+                    product.ProductCategories.Add(categoryToAdd);
                 }
             }
-            catch (DbUpdateException)
+            if (ModelState.IsValid)
             {
-                //Log the error (add ex variable name and write a log.)
-                ModelState.AddModelError("", "Unable to save changes. " +
-                    "Try again, and if the problem persists " +
-                    "see your system administrator.");
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
+            PopulateAssignedCategoryData(product);
             return View(product);
         }
 
         // GET: Products/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, string[] selectedCategories)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var productToUpdate = await _context.Products
+            .Include(i => i.ProductCategories)
+                .ThenInclude(i => i.Category)
+            .FirstOrDefaultAsync(m => m.ProductID == id);
+
+            if (await TryUpdateModelAsync<Product>(
+                productToUpdate,
+                "",
+                i => i.Description, i => i.ImageName, i => i.Price))
+                {
+                    UpdateProductCategories(selectedCategories, productToUpdate);
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateException)
+                    {
+                        ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                    }
+                    return RedirectToAction(nameof(Index));
+                }
+        
+            UpdateProductCategories(selectedCategories, productToUpdate);
+            PopulateAssignedCategoryData(productToUpdate);
+            return View(productToUpdate);
+        }
+
+        private void UpdateProductCategories(string[] selectedCategories, Product productToUpdate)
+        {
+            if (selectedCategories == null)
+            {
+                
+                productToUpdate.ProductCategories = new List<ProductCategory>();
+                return;
+            }
+
+            var selectedCategoriesHS = new HashSet<string>(selectedCategories);
+            var productCategories = new HashSet<int>
+                (productToUpdate.ProductCategories.Select(c => c.Category.CategoryID));
+            foreach (var category in _context.Categories)
+            {
+                if (selectedCategoriesHS.Contains(category.CategoryID.ToString()))
+                {
+                    if (!productCategories.Contains(category.CategoryID))
+                    {
+                        productToUpdate.ProductCategories.Add(new ProductCategory { ProductID = productToUpdate.ProductID, CategoryID = category.CategoryID});
+                    }
+                }
+                else
+                {
+                    if (productCategories.Contains(category.CategoryID))
+                    {
+                        ProductCategory categoryToRemove = productToUpdate.ProductCategories.FirstOrDefault(i => i.CategoryID == category.CategoryID);
+                        _context.Remove(categoryToRemove);
+                    }
+                }
+            }
+        }
+
+        // POST: Products/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost, ActionName("Edit")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -128,46 +208,35 @@ namespace FanCentral2.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var productToUpdate = await _context.Products
+            .Include(i => i.ProductCategories)
+                .ThenInclude(i => i.Category)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.ProductID == id);
+
+            if (productToUpdate == null)
             {
                 return NotFound();
             }
-            return View(product);
+            PopulateAssignedCategoryData(productToUpdate);
+            return View(productToUpdate);
         }
 
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(int? id)
+        private void PopulateAssignedCategoryData(Product product)
         {
-            if (id == null)
+            var allCategories = _context.Categories;
+            var productCategories = new HashSet<int>(product.ProductCategories.Select(c => c.CategoryID));
+            var viewModel = new List<AssignedCategoryData>();
+            foreach (var category in allCategories)
             {
-                return NotFound();
-            }
-
-            var productToUpdate = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == id);
-            if (await TryUpdateModelAsync<Product>(
-                productToUpdate,
-                "",
-                p => p.Description, p => p.ImageName, p => p.Price))
-            {
-                try
+                viewModel.Add(new AssignedCategoryData
                 {
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateException)
-                {
-                    //Log the error (uncomment ex variable...)
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                        "Try again, and if the problem persists, " +
-                        "see your system administrator.");
-                }
+                    CategoryID = category.CategoryID,
+                    CategoryName = category.CategoryName,
+                    Assigned = productCategories.Contains(category.CategoryID)
+                });
             }
-            return View(productToUpdate);
+            ViewData["Categories"] = viewModel;
         }
 
         // GET: Products/Delete/5
@@ -200,23 +269,14 @@ namespace FanCentral2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
+            Product product = await _context.Products
+                .Include(i => i.ProductCategories)
+                .SingleAsync(i => i.ProductID == id);
 
-            try
-            {
-                _context.Products.Remove(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            catch (DbUpdateException)
-            {
-                //Log the error add variable name ex
-                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true});
-            }
+            _context.Products.Remove(product);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
@@ -224,36 +284,5 @@ namespace FanCentral2.Controllers
             return _context.Products.Any(e => e.ProductID == id);
         }
 
-        /*public ViewResult Index() => View(_context.Products);
-        public ViewResult Edit(int productId) =>
-            View(_context.Products
-                .FirstOrDefault(p => p.ProductID == productId));
-
-        [HttpPost]
-        public IActionResult Edit(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.SaveProduct(product);
-                TempData["message"] = $"{product.Name} has been saved";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(product);
-            }
-        }
-        public ViewResult Create() => View("Edit", new Product());
-
-        [HttpPost]
-        public IActionResult Delete(int productId)
-        {
-            Product deletedProduct = _context.DeleteProduct(productId);
-            if (deletedProduct != null)
-            {
-                TempData["message"] = $"{deletedProduct.Name} was deleted";
-            }
-            return RedirectToAction("Index");
-        }*/
     }
 }

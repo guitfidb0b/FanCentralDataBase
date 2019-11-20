@@ -29,6 +29,35 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+    <div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                @{
+                    int cnt = 0;
+                    List<FanCentral2.Models.ViewModels.AssignedCategoryData> categories = ViewBag.Categories;
+
+                    foreach (var category in categories)
+                    {
+                        if (cnt++ % 5 == 0)
+                        {
+                            @:</tr><tr>
+                        }
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedCategories"
+                                   value="@category.CategoryID"
+                                   @(Html.Raw(category.Assigned ? "checked=\"checked\"" : "")) />
+                                   @category.CategoryName
+                        @:</td>
+                    }
+                    @:</tr>
+                }
+        </table>
+    </div>
+</div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
