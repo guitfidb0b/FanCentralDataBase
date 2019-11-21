@@ -94,15 +94,15 @@
 	{
 		<h3>Price: High to Low</h3>
 		<hr class="hr-yourSelection" />
-		<a class="category-links" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
-			<p class="category-spacing" style="color: dark-gray;">Filter: Low to High</p>
+		<a class="category-links" style="text-decoration: none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+			<p class="category-spacing" style="color: dark-gray; text-decoration: none;">Filter: Low to High</p>
 		</a>
 	}
 	else
 	{
 		<h3>Price: Low to High</h3>
 		<hr class="hr-yourSelection" />
-		<a class="category-links" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+		<a class="category-links" style="text-decoration: none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
 			<p class="category-spacing" style="color: dark-gray;">Filter: High to Low</p>
 		</a>
 	}
