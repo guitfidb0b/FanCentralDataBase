@@ -1,36 +1,36 @@
 @model GuestOrder
 
 <h2>Check out now</h2>
-<p>Please enter your details, and we'll ship your goods right away! This is Checkout from Order/</p>
+<p>Please enter your details, and we'll ship your goods right away!</p>
 
 <div asp-validation-summary="All"></div>
 
 <form asp-action="Checkout" method="post">
     <h3>Ship to</h3>
     <div>
-        <label>Name:</label><input asp-for="Name" />
+        <label>Name:</label><input asp-for="Name" class="checkout-input"/>
     </div>
     <h3>Address</h3>
     <div>
-        <label>Line 1:</label><input asp-for="Line1" />
+        <label>Line 1:</label><input asp-for="Line1" class="checkout-input"/>
     </div>
     <div>
-        <label>Line 2:</label><input asp-for="Line2" />
+        <label>Line 2:</label><input asp-for="Line2" class="checkout-input"/>
     </div>
     <div>
-        <label>Line 3:</label><input asp-for="Line3" />
+        <label>Line 3:</label><input asp-for="Line3" class="checkout-input"/>
     </div>
     <div>
-        <label>City:</label><input asp-for="City" />
+        <label>City:</label><input asp-for="City" class="checkout-input"/>
     </div>
     <div>
-        <label>State:</label><input asp-for="State" />
+        <label>State:</label><input asp-for="State" class="checkout-input"/>
     </div>
     <div>
-        <label>Zip:</label><input asp-for="Zip" />
+        <label>Zip:</label><input asp-for="Zip" class="checkout-input"/>
     </div>
     <div>
-        <label>Country:</label><input asp-for="Country" />
+        <label>Country:</label><input asp-for="Country" class="checkout-input"/>
     </div>
     <h3>Options</h3>
     <div>
@@ -38,8 +38,7 @@
             <input asp-for="GiftWrap" /> Gift wrap these items
         </label>
     </div>
-    <div>
-        <input type="submit" value="Complete Order" />
+    <div class="cart-button-container">
+        <input type="submit" value="Complete Order" class="in-cart-button"/>
     </div>
-    <a asp-controller="Categories" asp-action="Index" asp-route-id="22">Continue Shopping</a>
 </form>
