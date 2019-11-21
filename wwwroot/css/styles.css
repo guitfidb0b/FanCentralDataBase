@@ -1058,3 +1058,156 @@
    height:auto;
  }
 
+ /*containers for product, cart, and check out*/
+
+ .product-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  background-color: #008080;
+  padding: 10px;
+  grid-gap: 2px;
+}
+
+.product-container > div {
+  background-color: white;
+  text-align: center;
+  justify-content: center;
+}
+
+.product-container-pic{
+  grid-row: 1 / 4;
+}
+
+.product-container-desc{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-style: bold;
+  font-size: 50px;
+}
+
+.product-container-price{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-style: bold;
+  font-size: 30px;
+}
+
+.product-container-2cart{
+  text-align: center;
+  justify-content: center;
+}
+
+.to-cart-button{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-transform: uppercase;
+  background-color: #008080;
+  color: white;
+  text-align: center;
+  padding: 5px 5px;
+  font-size: 16px;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px #004d4d;
+  overflow: auto;
+}
+
+.to-cart-button:hover{
+  background-color: #00b3b3;
+}
+
+.cart-table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cart-header{
+  padding: 8px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-transform: uppercase;
+  background-color: #008080;
+  color: white;
+  text-align: center;
+}
+
+.cart-td{
+  padding: 8px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-tr{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.cart-tr:hover {
+  background-color: #00b3b3
+}
+
+.cart-footer{
+  padding: 8px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: right;
+}
+
+.total-footer{
+  padding: 8px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+}
+
+.in-cart-button{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-transform: uppercase;
+  background-color: #008080;
+  color: white;
+  text-align: center;
+  padding: 15px 15px;
+  font-size: 16px;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px #004d4d;
+  overflow: auto;
+}
+
+.in-cart-button:hover{
+  background-color: #00b3b3;
+}
+
+.remove-cart-button{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-transform: uppercase;
+  color: #272727;
+  text-align: center;
+  font-size: 10px;
+  margin: auto;
+  overflow: auto;
+}
+
+.remove-cart-button:hover{
+  background-color: #272727;
+  color: white;
+}
+
+.cart-button-container{
+  float: center;
+  padding: 40px 40px;
+  text-align:center;
+}
+
+.p{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.checkout-input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #008080;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.checkout-input:focus{
+  border: 3px solid #004d4d;
+}
