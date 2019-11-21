@@ -16,22 +16,45 @@
 	}
 	</h4>
 }
-
 <div class="your-selection">
+	<h3>Featured Categories</h3>
+	<hr class="hr-yourSelection" />
+	@foreach (var item in Model.Categories)
+	{
+		@if (item.CategoryCategory == "Featured")
+		{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+		}
+	}
 	<h3>All Departments</h3>
 	<hr class="hr-yourSelection" />
 	@foreach (var item in Model.Categories)
 	{
-		string selected = "";
-		if (item.CategoryID == (int?)ViewData["CategoryID"])
-        {
-            selected = "success";
-        }
-		<div class="category-height @selected">
-			<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
-				<p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p>
-			</a>
-		</div>
+		@if (item.CategoryCategory == "Departments")
+		{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+		}
+	}
+	<h3>Everything</h3>
+	<hr class="hr-yourSelection" />
+	@foreach (var item in Model.Categories)
+	{
+		@if (item.CategoryCategory == "All")
+		{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+		}
 	}
 	
 	<hr class="hr-yourSelection" />	

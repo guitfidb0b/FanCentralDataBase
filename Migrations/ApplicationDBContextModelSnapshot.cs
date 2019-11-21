@@ -140,6 +140,9 @@ namespace FanCentral2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("CategoryCategory")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("TEXT");
