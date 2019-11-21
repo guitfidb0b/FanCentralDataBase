@@ -8,6 +8,7 @@ namespace FanCentral2.Models
         public int CategoryID { get; set; }
         [Required]
         public string CategoryName { get; set; }
+        public string CategoryCategory { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
     }
 }
