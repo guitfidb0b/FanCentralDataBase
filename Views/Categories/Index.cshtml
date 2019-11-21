@@ -16,30 +16,97 @@
 	}
 	</h4>
 }
-
 <div class="your-selection">
+	<h3>Featured Categories</h3>
+	<hr class="hr-yourSelection" />
+	@foreach (var item in Model.Categories)
+	{
+		@if (item.CategoryCategory == "Featured")
+		{
+			@if (item.CategoryID == (int?)ViewData["CategoryID"])
+			{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<h3 class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</h3>
+				</a>
+			</div>
+			}
+			else
+			{
+				<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing" style="color: dark-gray;">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+			}
+		}
+	}
 	<h3>All Departments</h3>
 	<hr class="hr-yourSelection" />
 	@foreach (var item in Model.Categories)
 	{
-		string selected = "";
-		if (item.CategoryID == (int?)ViewData["CategoryID"])
-        {
-            selected = "success";
-        }
-		<div class="category-height @selected">
-			<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
-				<p class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</p>
-			</a>
-		</div>
+		@if (item.CategoryCategory == "Departments")
+		{
+			@if (item.CategoryID == (int?)ViewData["CategoryID"])
+			{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<h3 class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</h3>
+				</a>
+			</div>
+			}
+			else
+			{
+				<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing" style="color: dark-gray;">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+			}
+		}
 	}
-	
-	<hr class="hr-yourSelection" />	
-	<h3> Price Range </h3>
-	<input type="radio" name="price" value="$10 to $20"> $10 to $20<br />
-	<input type="radio" name="price" value="$20 to $40"> $20 to $40<br />
-	<input type="radio" name="price" value="$40 to $60"> $40 to $60<br />
+	<h3>Everything</h3>
 	<hr class="hr-yourSelection" />
+	@foreach (var item in Model.Categories)
+	{
+		@if (item.CategoryCategory == "All")
+		{
+			@if (item.CategoryID == (int?)ViewData["CategoryID"])
+			{
+			<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<h3 class="category-spacing">@Html.DisplayFor(modelItem => item.CategoryName)</h3>
+				</a>
+			</div>
+			}
+			else
+			{
+				<div class="category-height">
+				<a class="category-links" asp-action="Index" asp-route-id="@item.CategoryID">
+					<p class="category-spacing" style="color: dark-gray;">@Html.DisplayFor(modelItem => item.CategoryName)</p>
+				</a>
+			</div>
+			}
+		}
+	}
+
+	@if((int?)ViewData["WhichSort"] == 1)
+	{
+		<h3>Price: High to Low</h3>
+		<hr class="hr-yourSelection" />
+		<a class="category-links" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+			<p class="category-spacing" style="color: dark-gray;">Filter: Low to High</p>
+		</a>
+	}
+	else
+	{
+		<h3>Price: Low to High</h3>
+		<hr class="hr-yourSelection" />
+		<a class="category-links" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">
+			<p class="category-spacing" style="color: dark-gray;">Filter: High to Low</p>
+		</a>
+	}
+
 </div>
 <div class="main-box">
 @if (Model.Products != null)
