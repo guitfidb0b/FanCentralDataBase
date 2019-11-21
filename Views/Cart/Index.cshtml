@@ -2,7 +2,9 @@
 
 <h2>Your cart</h2>
 
-<table>
+@if(@Model.Cart.Lines.Count() != 0)
+{
+    <table>
     <thead>
         <tr>
             <th>Quantity</th>
@@ -21,7 +23,6 @@
                 <td>@((line.Quantity * line.Product.Price).ToString("c"))</td>
                 <form asp-action="RemoveFromCart" method="post">
                     <input type="hidden" name="productId" value="@line.Product.ProductID" />
-                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
                     <button type="submit">
                         Remove
                     </button>
@@ -38,8 +39,14 @@
 </table>
 
 <div>
-    <a href="@Model.ReturnUrl">Continue shopping</a>
     <a asp-action="Checkout" asp-controller="Order">
         Checkout
     </a>
+    <a asp-controller="Categories" asp-action="Index" asp-route-id="22">Continue Shopping</a>
 </div>
+}
+else
+{
+    <h1>Your Cart is Empty</h1>
+    <a asp-controller="Categories" asp-action="Index" asp-route-id="22">Continue Shopping</a>
+}
