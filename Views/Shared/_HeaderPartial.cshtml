@@ -48,7 +48,7 @@
       <img src="~/Images/Icons/search-icon.png" class="search-icon-size" />
       <form asp-controller="Categories" asp-action="Index" asp-route-id="22" method="get">
         <input type="text" name="SearchString" value="@ViewData["SearchString"]" class="header-search-bar" />
-        <input type="submit" value="Search" style="visibility: hidden;" />
+        <input type="hidden" name="Search" value="submit" />
       </form>
       <div class="parent-box">
         <a asp-controller="Categories" asp-action="Index" asp-route-id="1">
