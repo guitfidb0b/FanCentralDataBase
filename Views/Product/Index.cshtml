@@ -10,23 +10,26 @@
     {
         @if (item.ProductID == (int?)ViewData["ProductID"])
         {
-            <img src="~/Images/Products/@item.ImageName" />
-            <p> @item.Description </p>
-            <p> @item.Price.ToString("c") </p>
-            @if(item.ProductID == (int?)ViewData["AddToCart"])
-            {
-                <p>Success!!!!!</p>
-            }
-            <form id="@item.ProductID" asp-action="AddToCart"
-                asp-controller="Cart" method="post">
-                <input type="hidden" name="productID" value="@item.ProductID" />
-                <input type="hidden" name="returnUrl"
-                    value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                <button type="submit">
-                    Add to Cart
-                </button>
-                <a asp-controller="Categories" asp-action="Index" asp-route-id="22">Continue Shopping</a>
-            </form>
+            <div class="product-container">
+                <div class = "product-container-pic"><img src="~/Images/Products/@item.ImageName" /></div>
+                <div class="product-container-desc"> @item.Description </div>
+                <div class="product-container-price"> @item.Price.ToString("c") </div>
+                @if(item.ProductID == (int?)ViewData["AddToCart"])
+                {
+                    <p>Success!!!!!</p>
+                }
+                <div class="product-container-2cart">
+                    <form id="@item.ProductID" asp-action="AddToCart"
+                        asp-controller="Cart" method="post">
+                        <input type="hidden" name="productID" value="@item.ProductID" />
+                        <input type="hidden" name="returnUrl"
+                            value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <button type="submit" class="to-cart-button">
+                            Add to Cart
+                        </button>
+                    </form>
+                </div>
+            </div>
         }
     }
 }
