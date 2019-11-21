@@ -19,12 +19,21 @@ namespace FanCentral2.Controllers
         }
         
         // GET: Categories
-        public async Task<IActionResult> Index(int? id, int? productID, string searchString)
+        public async Task<IActionResult> Index(
+            int? id, 
+            int? productID, 
+            string sortOrder, 
+            string CurrentFilter,
+            string searchString)
         {
-            ViewData["SearchString"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["PriceSortParm"] = sortOrder == "price_desc" ? "price_asc" : "price_desc";
+            ViewData["CurrentFilter"] = searchString;
             
             //This is how we load all data into the view (using eager loading)
+            ViewData["CurrentFilter"] = searchString;
             var viewModel = new CategoriesIndexViewModel();
+            
             viewModel.Categories = await _context.Categories
                 .Include(c => c.ProductCategories)
                     .ThenInclude(c => c.Product)
@@ -48,6 +57,20 @@ namespace FanCentral2.Controllers
                 var products = from p in _context.Products
                                 select p;
                 viewModel.Products = viewModel.Products.Where(p => p.Description.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    viewModel.Products = viewModel.Products.OrderByDescending(p => (float)p.Price);
+                    ViewData["WhichSort"] = 1;
+                    break;
+                case "price_asc":
+                    viewModel.Products = viewModel.Products.OrderBy(p => (float)p.Price);
+                    ViewData["WhichSort"] = 0;
+                    break;
+                default:
+                    viewModel.Products = viewModel.Products.OrderBy(p => (float)p.Price);
+                    break;
             }
 
             return View(viewModel);
